@@ -1,0 +1,33 @@
+\ProvidesPackage{mcclanahan}
+
+%% includes
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{geometry}
+\usepackage{graphicx}
+
+%% functions
+% add link header before a paragraph
+\newcommand{\linkheader}[1]{
+\begin{footnotesize}
+\url{#1}
+\end{footnotesize}}
+
+% add horizontal line splitting sections
+\newcommand{\linesplit}{\noindent\rule{\textwidth}{1pt}}
+
+%% typesetting functions
+% (each successive overrides previous, so only use one)
+\newcommand{\formatresume}{
+\geometry{
+a4paper,
+total={210mm,297mm},
+left=5mm,
+right=5mm,
+top=5mm,
+bottom=5mm}
+\pagenumbering{gobble}}
+
+%% tabularx column types
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
