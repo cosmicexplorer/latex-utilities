@@ -2,9 +2,17 @@
 
 %% includes
 \usepackage{hyperref}
+\usepackage{natbib}
 \usepackage{tabularx}
 \usepackage{geometry}
 \usepackage{graphicx}
+\usepackage{fontspec}
+\usepackage[affil-it]{authblk}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage{float}
 
 %% functions
 % add link header before a paragraph
@@ -13,8 +21,23 @@
 \url{#1}
 \end{footnotesize}}
 
+% get dates formatted as YYYY-MM-DD
+\newcommand{\datewithdashes}{
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{-}}
+
+% insert image as figure
+\newcommand{\insertimageasfigure}[2]{
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{#1}
+\caption{#2}
+\label{fig:#1}
+\end{figure}}
+
 % add horizontal line splitting sections
 \newcommand{\linesplit}{\noindent\rule{\textwidth}{1pt}}
+\newcommand{\threeqlinesplit}{\noindent\rule{.75\textwidth}{1pt}}
 
 %% typesetting functions
 % (each successive overrides previous, so only use one)
@@ -28,6 +51,10 @@ top=5mm,
 bottom=5mm}
 \pagenumbering{gobble}}
 
+% format bibliography like a normal person
+\newcommand{\formatbib}{
+\bibliographystyle{te}}
+
 %% tabularx column types
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\right\arraybackslash}X}
+\newcolumntype{R}{>{\left\arraybackslash}X}
