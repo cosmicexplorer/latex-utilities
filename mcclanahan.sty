@@ -3,16 +3,20 @@
 %% includes
 \usepackage{hyperref}
 \usepackage{natbib}
+\usepackage{tabu}
 \usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{array}
 \usepackage{geometry}
 \usepackage{graphicx}
-\usepackage{fontspec}
+% \usepackage{fontspec}
 \usepackage[affil-it]{authblk}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 \usepackage{float}
+\usepackage{pdfpages}
 
 %% functions
 % add link header before a paragraph
@@ -56,5 +60,5 @@ bottom=5mm}
 \bibliographystyle{te}}
 
 %% tabularx column types
-\newcolumntype{L}{>{\right\arraybackslash}X}
-\newcolumntype{R}{>{\left\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
