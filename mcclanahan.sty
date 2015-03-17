@@ -18,27 +18,36 @@
 \usepackage{float}
 \usepackage{pdfpages}
 \usepackage{multirow}
+\usepackage{pgfkeys,pgfcalendar}
 
 %% functions
 % add link header before a paragraph
 \newcommand{\linkheader}[1]{
-\begin{footnotesize}
-\url{#1}
-\end{footnotesize}}
+  \begin{footnotesize}
+    \url{#1}
+  \end{footnotesize}}
 
 % get dates formatted as YYYY-MM-DD
 \newcommand{\datewithdashes}{
-\usepackage[yyyymmdd]{datetime}
-\renewcommand{\dateseparator}{-}}
+  \usepackage[yyyymmdd]{datetime}
+  \renewcommand{\dateseparator}{-}}
+
+% tomorrow command
+\newcount\pgfdatecount
+\newcommand{\tomorrow}{
+  \pgfcalendardatetojulian{\year-\month-\day+1}{\pgfdatecount}
+  \pgfcalendarjuliantodate{\the\pgfdatecount}{\myyear}{\mymonth}{\myday}
+  \pgfcalendarmonthname{\mymonth}\space\myday,\space\myyear
+}
 
 % insert image as figure
 \newcommand{\insertimageasfigure}[2]{
-\begin{figure}[H]
-\centering
-\includegraphics[width=\textwidth]{#1}
-\caption{#2}
-\label{fig:#1}
-\end{figure}}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{#1}
+    \caption{#2}
+    \label{fig:#1}
+  \end{figure}}
 
 % add horizontal line splitting sections
 \newcommand{\linesplit}{\noindent\rule{\textwidth}{1pt}}
@@ -47,18 +56,18 @@
 %% typesetting functions
 % (each successive overrides previous, so only use one)
 \newcommand{\formatresume}{
-\geometry{
-a4paper,
-total={210mm,297mm},
-left=5mm,
-right=5mm,
-top=5mm,
-bottom=5mm}
-\pagenumbering{gobble}}
+  \geometry{
+    a4paper,
+    total={210mm,297mm},
+    left=5mm,
+    right=5mm,
+    top=5mm,
+    bottom=5mm}
+  \pagenumbering{gobble}}
 
 % format bibliography like a normal person
 \newcommand{\formatbib}{
-\bibliographystyle{te}}
+  \bibliographystyle{te}}
 
 %% tabularx column types
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
