@@ -16,6 +16,7 @@
 \usepackage{amssymb}
 \usepackage[nottoc,notlot,notlof]{tocbibind}
 \usepackage[toc,page]{appendix}
+\usepackage{titlesec}
 \usepackage{float}
 \usepackage{pdfpages}
 \usepackage{multirow}
@@ -67,7 +68,8 @@
     bottom=5mm}
   \pagenumbering{gobble}
   \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{1pt plus 2pt minus 2pt}
-  \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{1pt plus 2pt minus 2pt}
+  \titleformat{\subsection}{\normalfont\large\bfseries}{\thesection}{1em}{}[{\titlerule[0.2pt]}]
+  \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
   \titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{1pt plus 2pt minus 2pt}
   \setlength\parindent{0pt}}
 
