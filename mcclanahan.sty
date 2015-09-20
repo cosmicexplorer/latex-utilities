@@ -8,6 +8,7 @@
 \usepackage[table]{xcolor}
 \usepackage{array}
 \usepackage{geometry}
+\usepackage{enumitem}
 \usepackage{graphicx}
 % \usepackage{fontspec}
 \usepackage[affil-it]{authblk}
@@ -21,7 +22,7 @@
 \usepackage{pdfpages}
 \usepackage{multirow}
 \usepackage{pgfkeys,pgfcalendar}
-\usepackage{titlesec}
+\usepackage{color}
 
 %% functions
 % add link header before a paragraph
@@ -36,7 +37,7 @@
   \usepackage[yyyymmdd]{datetime}
   \renewcommand{\dateseparator}{-}}
 
-% tomorrow command
+% tomorrow command (for things due tomorrow)
 \newcount\pgfdatecount
 \newcommand{\tomorrow}{
   \pgfcalendardatetojulian{\year-\month-\day+1}{\pgfdatecount}
@@ -55,9 +56,22 @@
 % add horizontal line splitting sections
 \newcommand{\linesplit}{\noindent\rule{\textwidth}{1pt}}
 \newcommand{\threeqlinesplit}{\noindent\rule{.75\textwidth}{1pt}}
+\newcommand{\thinlinesplit}{\titlerule[0.2pt]\vspace{5pt}}
 
-%% typesetting functions
-% (each successive overrides previous, so only use one)
+% format bibliography like a normal person
+\newcommand{\formatbib}{\bibliographystyle{te}}
+
+%% tabularx column types
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% better sharp symbol
+\newcommand{\bettersharp}{$^\sharp$}
+% better C++ formatting
+\newcommand{\seeplusplus}{C\texttt{++}}
+
+%% typesetting functions for my resume
 \newcommand{\formatresume}{
   \geometry{
     a4paper,
@@ -67,20 +81,15 @@
     top=5mm,
     bottom=5mm}
   \pagenumbering{gobble}
+  % \allsectionsfont{\hspace*{5pt}}
+  \setlist[itemize]{itemsep=-3pt}
   \titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{1pt plus 2pt minus 2pt}
-  \titleformat{\subsection}{\normalfont\large\bfseries}{\thesection}{1em}{}[{\titlerule[0.2pt]}]
+  \titleformat\section{\normalfont\large\bfseries\sffamily\scshape}{
+    \thesection}{1em}{}[\thinlinesplit]
   \titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+  \titleformat\subsection[runin]{\normalfont\sffamily\bfseries}{\thesection}{1em}{}
   \titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{1pt plus 2pt minus 2pt}
   \setlength\parindent{0pt}}
 
-% format bibliography like a normal person
-\newcommand{\formatbib}{
-  \bibliographystyle{te}}
-
-%% tabularx column types
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-% better sharp symbol
-\newcommand{\textsharp}{$^\sharp$}
+\newcommand{\etherealtext}[1]{
+  \textcolor{gray}{\textit{{\fontfamily{qag}\selectfont #1}}}}
