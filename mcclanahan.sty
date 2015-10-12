@@ -23,6 +23,9 @@
 \usepackage{multirow}
 \usepackage{pgfkeys,pgfcalendar}
 \usepackage{color}
+% ceiling!
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 
 %% functions
 % add link header before a paragraph
@@ -93,3 +96,6 @@
 
 \newcommand{\etherealtext}[1]{
   \textcolor{gray}{\textit{{\fontfamily{qag}\selectfont #1}}}}
+
+% math commands
+\newcommand{\makeseq}[1]{\{#1\}_{i = 1}^\infty}
