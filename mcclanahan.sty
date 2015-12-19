@@ -2,6 +2,7 @@
 
 %% includes
 \usepackage{hyperref}
+\usepackage{enumitem}
 \usepackage{tabu}
 \usepackage{tabularx}
 \usepackage[table]{xcolor}
@@ -109,3 +110,9 @@
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\disjointunion}{\coprod}
 \renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+% space after common math symbols
+\let\oldexists\exists
+\renewcommand{\exists}{\oldexists\,}
+\newcommand{\st}{\,\,s.t.\,\,}
+\let\oldforall\forall
+\renewcommand{\forall}{\oldforall\,}
