@@ -23,6 +23,7 @@
 \usepackage{multirow}
 \usepackage{pgfkeys,pgfcalendar}
 \usepackage{color}
+\usepackage{fancyvrb}
 % ceiling!
 \usepackage{mathtools}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -30,10 +31,11 @@
 %% functions
 % add link header before a paragraph
 \newcommand{\linkheader}[1]{
-  \begin{footnotesize}
+  \begin{scriptsize}
     \url{#1}
-  \end{footnotesize}
-  \vspace{2pt}}
+  \end{scriptsize}}
+
+\newcommand{\inlinelinkheader}[1]{\hspace{1pt} $|$ \linkheader{#1} \vspace{2pt}}
 
 % get dates formatted as YYYY-MM-DD
 \newcommand{\datewithdashes}{
@@ -110,10 +112,24 @@
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\disjointunion}{\coprod}
 \renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
+\newcommand{\ball}[2]{B(#1,#2)}
+\newcommand{\cball}[2]{\overbar{B}(#1,#2)}
+\newcommand{\e}{\epsilon}
+\newcommand{\de}{\delta}
+\newcommand{\co}{\backslash}
 % space after common math symbols
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists\,}
+\let\oldnexists\nexists
+\renewcommand{\nexists}{\oldnexists\,}
 \newcommand{\st}{\,\,s.t.\,\,}
 \let\oldforall\forall
 \renewcommand{\forall}{\,\oldforall\,}
 \newcommand{\pipe}{\,|\,}
+\newcommand{\bigfrac}[2]{\bigg(\frac{#1}{#2}\bigg)}
+
+% size section headings
+\newcommand{\sizesections}[1]{
+  \titleformat{\section}
+  {\normalfont\fontsize{#1}{#1}\bfseries}{\thesection}{1em}{}
+}
