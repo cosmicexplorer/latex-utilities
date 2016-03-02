@@ -24,6 +24,8 @@
 \usepackage{pgfkeys,pgfcalendar}
 \usepackage{color}
 \usepackage{fancyvrb}
+\usepackage{extsizes}
+\usepackage{siunitx}
 % ceiling!
 \usepackage{mathtools}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -127,6 +129,7 @@
 \renewcommand{\forall}{\,\oldforall\,}
 \newcommand{\pipe}{\,|\,}
 \newcommand{\bigfrac}[2]{\bigg(\frac{#1}{#2}\bigg)}
+\newcommand{\myeqref}[1]{\begin{normalfont}{(\ref{#1})}\end{normalfont}}
 
 % size section headings
 \newcommand{\sizesections}[1]{
