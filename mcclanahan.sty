@@ -130,6 +130,8 @@
 \newcommand{\pipe}{\,|\,}
 \newcommand{\bigfrac}[2]{\bigg(\frac{#1}{#2}\bigg)}
 \newcommand{\myeqref}[1]{\begin{normalfont}{(\ref{#1})}\end{normalfont}}
+% adds parens to within the link
+\newcommand{\myeqrefp}[1]{\begin{normalfont}{\hyperref[#1]{(\ref*{#1})}}\end{normalfont}}
 
 % size section headings
 \newcommand{\sizesections}[1]{
