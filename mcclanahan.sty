@@ -110,6 +110,8 @@
   \textcolor{gray}{\textit{{\fontfamily{qag}\selectfont #1}}}}
 
 % math commands
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
 \newcommand{\makeseq}[1]{\{#1\}_{i = 1}^\infty}
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\disjointunion}{\coprod}
@@ -132,6 +134,9 @@
 \newcommand{\myeqref}[1]{\begin{normalfont}{(\ref{#1})}\end{normalfont}}
 % adds parens to within the link
 \newcommand{\myeqrefp}[1]{\begin{normalfont}{\hyperref[#1]{(\ref*{#1})}}\end{normalfont}}
+
+% si setup default
+\sisetup{per-mode = symbol}
 
 % size section headings
 \newcommand{\sizesections}[1]{
