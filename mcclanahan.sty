@@ -153,3 +153,11 @@
   \let\@ifnextchar\new@ifnextchar
   \array{*\c@MaxMatrixCols c}}
 \makeatother
+
+% resize rows of tabular (https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables)
+\newenvironment{resizearray}[1]{
+  \bgroup
+  \def\arraystretch{#1}
+}{
+  \egroup
+}
