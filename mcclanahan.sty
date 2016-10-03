@@ -29,6 +29,7 @@
 % ceiling!
 \usepackage{mathtools}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 %% functions
 % add link header before a paragraph
@@ -143,3 +144,12 @@
   \titleformat{\section}
   {\normalfont\fontsize{#1}{#1}\bfseries}{\thesection}{1em}{}
 }
+
+% allow row resizing of matrices (https://tex.stackexchange.com/questions/14071/how-can-i-increase-the-line-spacing-in-a-matrix)
+\makeatletter
+\renewcommand*\env@matrix[1][\arraystretch]{%
+  \edef\arraystretch{#1}%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{*\c@MaxMatrixCols c}}
+\makeatother
