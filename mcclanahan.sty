@@ -112,6 +112,7 @@
 % math commands
 \DeclareMathOperator*{\argmin}{arg\!min}
 \DeclareMathOperator*{\argmax}{arg\!max}
+\DeclareMathOperator*{\capac}{cap}
 \newcommand{\makeseq}[1]{\{#1\}_{i = 1}^\infty}
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\disjointunion}{\coprod}
@@ -135,6 +136,8 @@
 \newcommand{\myeqref}[1]{\begin{normalfont}{(\ref{#1})}\end{normalfont}}
 % adds parens to within the link
 \newcommand{\myeqrefp}[1]{\begin{normalfont}{\hyperref[#1]{(\ref*{#1})}}\end{normalfont}}
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\scr}[1]{\mathcal{#1}}
 
 % si setup default
 \sisetup{per-mode = symbol}
