@@ -142,6 +142,8 @@
 \newcommand{\myeqrefp}[1]{\begin{normalfont}{\hyperref[#1]{(\ref*{#1})}}\end{normalfont}}
 \newcommand{\abs}[1]{\lvert #1 \rvert}
 \newcommand{\scr}[1]{\mathcal{#1}}
+% parentheses! \p[size]{<content>}; e.g. \p[\bigg]{sup} or \p{sup}
+\newcommand{\p}[2][]{#1(#2#1)}
 
 % si setup default
 \sisetup{per-mode = symbol}
