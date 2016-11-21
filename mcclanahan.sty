@@ -69,7 +69,12 @@
   (\parskip)+(\abovecaptionskip)+(\belowcaptionskip)+(\baselineskip * #1)+#2}
 \newcommand{\pageminuscaption}[2]{\dimexpr\measurepage-\captionheight{#1}{#2}}
 \newcommand{\includeforrestofpageornormal}[3]{
-  \ifthenelse{\pageminuscaption{#1}{#2} < 0}{
+  \newlength{\piclen}
+  \settowidth{\piclen}{\includegraphics[height=\pageminuscaption{#1}{#2},keepaspectratio]{#3}}
+  \ifthenelse{
+    \pageminuscaption{#1}{#2} < 0 \OR
+    \piclen > \textwidth
+  }{
     \includegraphics[width=\textwidth,keepaspectratio]{#3}
   }{
     \includegraphics[height=\pageminuscaption{#1}{#2},keepaspectratio]{#3}
