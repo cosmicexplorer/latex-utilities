@@ -27,6 +27,7 @@
 \usepackage{fancyvrb}
 \usepackage{extsizes}
 \usepackage{siunitx}
+\usepackage{ifthen}
 % ceiling!
 \usepackage{mathtools}
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -64,18 +65,32 @@
 % same but taking up the rest of the page
 \newcommand{\measurepage}{\dimexpr\pagegoal-\pagetotal-\baselineskip\relax}
 % argument is number of lines
-\newcommand{\captionheight}[1]{\dimexpr
-  \parskip+\abovecaptionskip+\belowcaptionskip+(\baselineskip * #1)}
-\newcommand{\pageminuscaption}[1]{\dimexpr\measurepage-\captionheight{#1}}
+\newcommand{\captionheight}[2]{\dimexpr
+  (\parskip)+(\abovecaptionskip)+(\belowcaptionskip)+(\baselineskip * #1)+#2}
+\newcommand{\pageminuscaption}[2]{\dimexpr\measurepage-\captionheight{#1}{#2}}
+\newcommand{\includeforrestofpageornormal}[3]{
+  \ifthenelse{\pageminuscaption{#1}{#2} < 0}{
+    \includegraphics[width=\textwidth,keepaspectratio]{#3}
+  }{
+    \includegraphics[height=\pageminuscaption{#1}{#2},keepaspectratio]{#3}
+  }
+}
 % second argument is number of lines of caption
-\newcommand{\insertimageasfigurepage}[3]{
+\newcommand{\insertimageasfigurepage}[4][3pt]{
   \begin{figure}[H]
     \centering
-    \includegraphics[height=\pageminuscaption{#2},keepaspectratio]{#1}
+    \includeforrestofpageornormal{#3}{#1}{#2}
+    \caption{#4}
+    \label{fig:#2}
+  \end{figure}}
+% same, but with dimensions
+\newcommand{\insertimageasfigurewidth}[3]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=#2,keepaspectratio]{#1}
     \caption{#3}
     \label{fig:#1}
   \end{figure}}
-% same, but with dimensions
 \newcommand{\insertimageasfiguredims}[4]{
   \begin{figure}[H]
     \centering
