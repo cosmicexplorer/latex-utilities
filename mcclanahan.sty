@@ -61,6 +61,20 @@
     \caption{#2}
     \label{fig:#1}
   \end{figure}}
+% same but taking up the rest of the page
+\newcommand{\measurepage}{\dimexpr\pagegoal-\pagetotal-\baselineskip\relax}
+% argument is number of lines
+\newcommand{\captionheight}[1]{\dimexpr
+  \parskip+\abovecaptionskip+\belowcaptionskip+(\baselineskip * #1)}
+\newcommand{\pageminuscaption}[1]{\dimexpr\measurepage-\captionheight{#1}}
+% second argument is number of lines of caption
+\newcommand{\insertimageasfigurepage}[3]{
+  \begin{figure}[H]
+    \centering
+    \includegraphics[height=\pageminuscaption{#2},keepaspectratio]{#1}
+    \caption{#3}
+    \label{fig:#1}
+  \end{figure}}
 % same, but with dimensions
 \newcommand{\insertimageasfiguredims}[4]{
   \begin{figure}[H]
