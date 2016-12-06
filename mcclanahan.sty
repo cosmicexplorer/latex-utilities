@@ -182,6 +182,16 @@
 \newcommand{\scr}[1]{\mathcal{#1}}
 % parentheses! \p[size]{<content>}; e.g. \p[\bigg]{sup} or \p{sup}
 \newcommand{\p}[2][]{#1(#2#1)}
+\newcommand{\vect}[2]{
+  \begin{bmatrix}
+    #1 \\ #2
+  \end{bmatrix}
+}
+\newcommand{\vecth}[3]{
+  \begin{bmatrix}
+    #1 \\ #2 \\ #3
+  \end{bmatrix}
+}
 
 % si setup default
 \sisetup{per-mode = symbol}
