@@ -227,3 +227,11 @@
 }
 
 \newenvironment{desc}{\begin{description}[style=nextline]}{\end{description}}
+
+% easylist has dumb defaults
+\let\OldEasylist\easylist
+\let\OldEndEasylist\endeasylist
+\renewenvironment{easylist}{
+  \OldEasylist
+  \ListProperties(Progressive*=3ex, Start1=1)
+}{\OldEndEasylist}
