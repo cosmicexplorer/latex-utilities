@@ -1,16 +1,20 @@
-\ProvidesPackage{mcclanahan}
+\RequirePackage{expl3}
+
+\ProvidesExplPackage{mcclanahan}{2016/12/13}{1}{Collection of assorted utilities.}
 
 %% includes
+\usepackage{graphicx}
+\usepackage{etextools}
 \usepackage{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{enumitem}
 \usepackage{tabu}
 \usepackage{tabularx}
-\usepackage[table]{xcolor}
-\usepackage{array}
+% \usepackage[table]{xcolor}
+% \usepackage{xcolor}
+% \usepackage{array}
 \usepackage{enumitem}
-\usepackage{graphicx}
 \usepackage[affil-it]{authblk}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -27,12 +31,13 @@
 \usepackage{fancyvrb}
 \usepackage{extsizes}
 \usepackage{siunitx}
-\usepackage{ifthen}
-\usepackage[ampersand]{easylist}
-% ceiling!
+\usepackage{xifthen}
+\usepackage{environ}
 \usepackage{mathtools}
-\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
-\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{xparse}
+\usepackage{trace}
+\usepackage{xstring}
+\usepackage{xpatch}
 
 %% functions
 % add link header before a paragraph
@@ -149,6 +154,8 @@
   \textcolor{gray}{\textit{{\fontfamily{qag}\selectfont #1}}}}
 
 % math commands
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \DeclareMathOperator*{\argmin}{arg\!min}
 \DeclareMathOperator*{\argmax}{arg\!max}
 \DeclareMathOperator*{\arginf}{arg\!inf}
@@ -227,11 +234,12 @@
 }
 
 \newenvironment{desc}{\begin{description}[style=nextline]}{\end{description}}
+\newcommand\parenref[1]{(\nameref{#1})}
+\newcommand\note[2][<]{
+  \textbf{#1#2}
+}
 
-% easylist has dumb defaults
-\let\OldEasylist\easylist
-\let\OldEndEasylist\endeasylist
-\renewenvironment{easylist}{
-  \OldEasylist
-  \ListProperties(Progressive*=3ex, Start1=1)
-}{\OldEndEasylist}
+\NewDocumentCommand{\deffo}{m o +g}{
+  \item[#1] \IfValueT{#2}{#2}
+    \IfValueT{#3}{\hfill \\ #3}
+}
