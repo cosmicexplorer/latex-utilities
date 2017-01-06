@@ -243,3 +243,14 @@
   \item[#1] \IfValueT{#2}{#2}
     \IfValueT{#3}{\hfill \\ #3}
 }
+
+% define a var like \mcclanahan_var:nn { key } { value }
+% use a var like \mcclanahan_ref:n { key } -> expands to <value>
+% obv make sure to do this within \ExplSyntaxOn,\ExplSyntaxOff
+\cs_new:Npn \mcclanahan_var:nn #1#2 {
+  \cs_new:cpn { mcclanahan_ref_ #1 } { #2 }
+}
+
+\cs_new:Npn \mcclanahan_ref:n #1 {
+  \use:c { mcclanahan_ref_ #1 } {}
+}
