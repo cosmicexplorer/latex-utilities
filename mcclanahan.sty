@@ -38,6 +38,7 @@
 \usepackage{trace}
 \usepackage{xstring}
 \usepackage{xpatch}
+\usepackage{titling}
 
 %% functions
 % add link header before a paragraph
@@ -256,4 +257,14 @@
   \use:c { mcclanahan_ref_ #1 } {}
 }
 
-\newcommand\parenfrac[2]{\p[\bigg]{\frac{#1}{#2}}}
+\newcommand\parenfrac[3][\bigg]{\p[#1]{\frac{#2}{#3}}}
+
+\newcommand{\shortertitleargs}[3]{
+  \noindent\begin{tabularx}{\textwidth}{L{#1} C{#2} R{#3}}
+    \textit{\theauthor} & \thetitle & \textit{\thedate} \\
+  \end{tabularx}
+}
+
+\NewDocumentCommand{\shortertitle}{O{.3\textwidth} O{.5\textwidth} O{.2\textwidth}}{
+  \shortertitleargs{#1}{#2}{#3}
+}
