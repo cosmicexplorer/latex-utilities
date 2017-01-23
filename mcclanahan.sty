@@ -39,6 +39,7 @@
 \usepackage{xstring}
 \usepackage{xpatch}
 \usepackage{titling}
+\usepackage{scalerel}
 
 %% functions
 % add link header before a paragraph
@@ -169,7 +170,7 @@
 \newcommand{\makeseq}[1]{\{#1\}_{i = 1}^\infty}
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\disjointunion}{\coprod}
-\newcommand{\disjcup}{\scriptstyle\coprod}
+\newcommand{\disjcup}{\mathrel{\raisebox{.1em}{\vstretch{.75}{\hstretch{.8}{\coprod}}}}}
 \renewcommand{\qedsymbol}{\rule{0.7em}{0.7em}}
 \newcommand{\ball}[2]{B(#1,#2)}
 \newcommand{\cball}[2]{\overbar{B}(#1,#2)}
