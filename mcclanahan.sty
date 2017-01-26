@@ -20,7 +20,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage[nottoc,notlot,notlof]{tocbibind}
+\usepackage[nottoc,notlot,notlof,numbib]{tocbibind}
 \usepackage[toc,page]{appendix}
 \usepackage{titlesec}
 \usepackage{float}
@@ -41,6 +41,7 @@
 \usepackage{titling}
 \usepackage{scalerel}
 \usepackage{centernot}
+\usepackage{etoolbox}
 
 %% functions
 % add link header before a paragraph
@@ -270,4 +271,25 @@
 
 \NewDocumentCommand{\shortertitle}{O{.3\textwidth} O{.5\textwidth} O{.2\textwidth}}{
   \shortertitleargs{#1}{#2}{#3}
+}
+
+% biblio no longer just "references"!
+% BEFORE DOCUMENT
+\newcommand\setbibtitle[1]{
+  \settocbibname{#1}
+}
+
+% bib's header is normally \section* or chapter*; the numbib option for tocbibind is set above, so star removed
+% this command adds the star back
+% NOTE: uses tocbibind internal option! may change
+\makeatletter
+\newcommand\setbibnonum{\@donumbibfalse}
+% just in case you change your mind
+\newcommand\setbibnum{\@donumbibtrue}
+\makeatother
+
+% TODO: accept multiple bibtex files? variadic args r hard
+\newcommand\makebib[2]{
+  \bibliographystyle{#1}
+  \bibliography{#2}
 }
