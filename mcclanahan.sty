@@ -217,28 +217,29 @@
 }
 \newcommand{\rst}[2]{#1\restriction_{#2}}
 
-\newcommand\N{\ensuremath{\mathbb{N}}}
-\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\N{\mathbb{N}}
+\newcommand\R{\mathbb{R}}
 \NewDocumentCommand{\Rp}{O{n} o}{
-  \ensuremath{\IfValueTF{#2}{\mathbb{R}^{#1 \times #2}}{\mathbb{R}^{#1}}}
+  \IfValueTF{#2}{\mathbb{R}^{#1 \times #2}}{\mathbb{R}^{#1}}
 }
-\newcommand\Z{\ensuremath{\mathbb{Z}}}
-\newcommand\Q{\ensuremath{\mathbb{Q}}}
-\newcommand\C{\ensuremath{\mathbb{C}}}
+\newcommand\Z{\mathbb{Z}}
+\newcommand\Q{\mathbb{Q}}
+\newcommand\C{\mathbb{C}}
 
 \NewDocumentCommand\M{O{n} o}{
-  \ensuremath{
-    \mathbb{M}\sb{
-      \IfValueTF{#2}{
-        {#1 \times #2}}{
-        {#1}}
-    }
+  \mathbb{M}\sb{
+    \IfValueTF{#2}{
+      {#1 \times #2}}{
+      {#1}}
   }
 }
 
 \DeclareExpandableDocumentCommand\MatrixSet{m m}{
   \mathbb{M}_{#1 \times #2}
 }
+
+\newcommand\sse{\subseteq}
+\newcommand\ssn{\subsetneq}
 
 % si setup default
 \sisetup{per-mode = symbol}
