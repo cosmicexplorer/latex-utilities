@@ -272,9 +272,15 @@
 \newenvironment{desc}{\begin{description}[style=nextline]}{\end{description}}
 \newcommand\parenref[1]{(\nameref{#1})}
 
-\NewDocumentCommand\note{O{\textless} O{?\textgreater} m}{
-  \textbf{#1 #3 #2\space}
+\newcommand\makenote[3]{\textbf{#1 #3 #2\space}}
+
+\newcommand\noteoption[3]{
+  \makenote{\IfValueTF{#1}{#1}{\textless}}{\IfValueTF{#2}{#2}{?\textgreater}}{#3}
 }
+
+\NewDocumentCommand\note{o o m}{\noteoption{#1}{#2}{#3}}
+
+\NewDocumentCommand\NOTE{o o m}{\noteoption{#1}{#2}{\uppercase{#3}}}
 
 \NewDocumentCommand{\deffo}{m o +g}{
   \item[#1] \IfValueT{#2}{#2}
