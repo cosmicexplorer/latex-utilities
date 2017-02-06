@@ -4,7 +4,6 @@
 
 %% includes
 \usepackage{graphicx}
-\usepackage{etextools}
 \usepackage{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -220,7 +219,33 @@
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
+\NewDocumentCommand{\Rp}{O{n} o}{
+  \ensuremath{\IfValueTF{#2}{\mathbb{R}^{#1 \times #2}}{\mathbb{R}^{#1}}}
+}
 \newcommand\Z{\ensuremath{\mathbb{Z}}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+
+\NewDocumentCommand\M{O{n} o}{
+  \ensuremath{
+    \mathbb{M}\sb{
+      \IfValueTF{#2}{
+        {#1 \times #2}}{
+        {#1}}
+    }
+  }
+}
+
+\DeclareExpandableDocumentCommand\MatrixSet{m m}{
+  \mathbb{M}_{#1 \times #2}
+}
+
+% \NewDocumentCommand\M{O{n} o}{
+%   \edef\res{
+%     \IfValueTF{#2}{#1 \times #2}{#1}
+%   }
+%   \mathbb{M}_{\res}
+% }
 
 % si setup default
 \sisetup{per-mode = symbol}
