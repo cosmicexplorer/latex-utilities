@@ -11,9 +11,11 @@
 \usepackage{enumitem}
 \usepackage{tabu}
 \usepackage{tabularx}
+\usepackage[debugshow]{tabulary}
 % \usepackage[table]{xcolor}
 % \usepackage{xcolor}
-% \usepackage{array}
+\usepackage{array}
+\usepackage{ragged2e}
 \usepackage{enumitem}
 \usepackage[affil-it]{authblk}
 \usepackage{amsmath}
@@ -42,6 +44,10 @@
 \usepackage{scalerel}
 \usepackage{centernot}
 \usepackage{etoolbox}
+
+% dates!
+% see http://texdoc.net/texmf-dist/doc/latex/isodate/isodate.pdf to set options
+\usepackage[english,iso]{isodate}
 
 %% functions
 % add link header before a paragraph
@@ -125,9 +131,10 @@
 \newcommand{\formatbib}{\bibliographystyle{te}}
 
 %% tabularx column types
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+%% \def used instead of \newcolumntype to avoid collisions
+% \def\Ltabx{>{\raggedright\hspace{0pt}}X}
+% \def\Ctabx{>{\centering{0pt}}X}
+% \def\Rtabx{>{\raggedleft\hspace{0pt}}X}
 
 % better sharp symbol
 \newcommand{\bettersharp}{\resizebox{7pt}{10pt}{\textsuperscript{\sharp}}}
@@ -263,14 +270,23 @@
 
 \newcommand\parenfrac[3][\bigg]{\p[#1]{\frac{#2}{#3}}}
 
-\newcommand{\shortertitleargs}[3]{
-  \noindent\begin{tabularx}{\textwidth}{L{#1} C{#2} R{#3}}
-    \textit{\theauthor} & \thetitle & \textit{\thedate} \\
-  \end{tabularx}
+\newcommand\tmpset[2]{
+  \begingroup
+  #1
+  #2
+  \endgroup
 }
 
-\NewDocumentCommand{\shortertitle}{O{.3\textwidth} O{.5\textwidth} O{.2\textwidth}}{
-  \shortertitleargs{#1}{#2}{#3}
+\newcommand\autoscaletable[3][0pt]{
+  \tmpset{\setlength\tabcolsep{#1}}{
+    \noindent
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} #2}
+      #3
+    \end{tabular*}}
+}
+
+\newcommand\shortertitle{
+  \autoscaletable{l c r}{\textit{\theauthor} & \thetitle & \textit{\thedate}}
 }
 
 % biblio no longer just "references"!
@@ -282,8 +298,8 @@
 % bib's header is normally \section* or chapter*; the numbib option for tocbibind is set above, so star removed
 % this command adds the star back
 % NOTE: uses tocbibind internal option! may change
+% \setbibnum is just in case you change your mind
 \makeatletter
 \newcommand\setbibnonum{\@donumbibfalse}
-% just in case you change your mind
 \newcommand\setbibnum{\@donumbibtrue}
 \makeatother
