@@ -43,6 +43,8 @@
 \usepackage{scalerel}
 \usepackage{centernot}
 \usepackage{etoolbox}
+\usepackage{printlen}
+\usepackage{fancyhdr}
 
 % dates!
 % see http://texdoc.net/texmf-dist/doc/latex/isodate/isodate.pdf to set options
@@ -335,3 +337,8 @@
 \newcommand\setbibnonum{\@donumbibfalse}
 \newcommand\setbibnum{\@donumbibtrue}
 \makeatother
+
+\newcommand\setheader[1]{
+  \pagestyle{fancy}
+  \chead{#1}
+}
