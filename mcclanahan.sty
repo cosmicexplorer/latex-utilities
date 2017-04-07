@@ -45,6 +45,7 @@
 \usepackage{etoolbox}
 \usepackage{printlen}
 \usepackage{fancyhdr}
+\usepackage{setspace}
 
 % dates!
 % see http://texdoc.net/texmf-dist/doc/latex/isodate/isodate.pdf to set options
@@ -322,6 +323,14 @@
 
 \newcommand\shortertitle{
   \autoscaletable{l c r}{\textit{\theauthor} & \thetitle & \textit{\thedate}}
+}
+
+\newcommand\mediumtitle{
+  \autoscaletable{l c r}{\textit{\theauthor} && \textit{\thedate}} \\
+  \vspace{-30pt}
+  \begin{center}
+    \thetitle
+  \end{center}
 }
 
 % biblio no longer just "references"!
