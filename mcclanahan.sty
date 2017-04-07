@@ -354,7 +354,12 @@
 \newcommand\setbibnum{\@donumbibtrue}
 \makeatother
 
-\newcommand\setheader[1]{
+\makeatletter
+\newcommand\setheader{
+  \edef\@my@cur@title{\thetitle}
   \pagestyle{fancy}
-  \chead{#1}
+  \lhead{\@my@cur@title}
+  \chead{}
+  \rhead{\textit{\theauthor} \\ \textit{\thedate}}
 }
+\makeatother
