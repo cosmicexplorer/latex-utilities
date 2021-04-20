@@ -7,7 +7,6 @@
 \usepackage{geometry}
 \usepackage{enumitem}
 \usepackage{hyperref}
-\usepackage{enumitem}
 \usepackage{tabu}
 \usepackage{tabularx}
 \usepackage[debugshow]{tabulary}
@@ -15,7 +14,6 @@
 % \usepackage{xcolor}
 \usepackage{array}
 \usepackage{ragged2e}
-\usepackage{enumitem}
 \usepackage[affil-it]{authblk}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -208,6 +206,8 @@
 \newcommand{\secref}[1]{\hyperref[#1]{(\ref*{#1})}}
 % adds parens to within the link
 \newcommand{\myeqrefp}[1]{\begin{normalfont}{\hyperref[#1]{(\ref*{#1})}}\end{normalfont}}
+\newcommand{\explicitsecref}[1]{\hyperref[#1]{(section \hspace{2pt} \ref*{#1})}}
+\newcommand{\expliciteqnref}[1]{\hyperref[#1]{(equation \hspace{2pt} \ref*{#1})}}
 \newcommand{\abs}[1]{\lvert #1 \rvert}
 \newcommand{\scr}[1]{\mathcal{#1}}
 % parentheses! \p[size]{<content>}; e.g. \p[\bigg]{sup} or \p{sup}
@@ -223,6 +223,15 @@
   \end{bmatrix}
 }
 \newcommand{\rst}[2]{#1\restriction_{#2}}
+\newcommand{\true}{\text{true}}
+\newcommand{\false}{\text{false}}
+\newcommand{\binaryspace}{\{\true, \false\}}
+
+% Align within the contents of a piecewise expression.
+\newenvironment{alignedcases}[1]{\left\{\begin{array}{#1}}{\end{array}\right\}}
+% Accept a label for the new equation, and ensure the equation ends in a period.
+% \newenvironment{\eqwrapper}[2]{\begin{equation}\label{eqn: #1}}{#2.\end{equation}}
+
 
 \newcommand\N{\mathbb{N}}
 \newcommand\R{\mathbb{R}}
