@@ -44,7 +44,6 @@
 \usepackage{printlen}
 \usepackage{fancyhdr}
 \usepackage{setspace}
-\usepackage{apacite}
 
 \newcommand\timesnewroman{
   \usepackage{newtxtext,newtxmath}
@@ -226,6 +225,10 @@
 \newcommand{\true}{\text{true}}
 \newcommand{\false}{\text{false}}
 \newcommand{\binaryspace}{\{\true, \false\}}
+\newcommand{\binaryspacewith}[1]{\{\true, \false, \text{#1}\}}
+\newcommand{\undefval}{\text{undef}}
+\newcommand{\ternarylogicspace}{\binaryspacewith{\undefval}}
+\newcommand{\otherwise}{\text{otherwise}}
 
 % Align within the contents of a piecewise expression.
 \newenvironment{alignedcases}[1]{\left\{\begin{array}{#1}}{\end{array}\right\}}
