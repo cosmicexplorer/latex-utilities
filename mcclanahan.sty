@@ -11,7 +11,7 @@
 \usepackage{tabularx}
 \usepackage[debugshow]{tabulary}
 % \usepackage[table]{xcolor}
-% \usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{array}
 \usepackage{ragged2e}
 \usepackage[affil-it]{authblk}
@@ -44,6 +44,7 @@
 \usepackage{printlen}
 \usepackage{fancyhdr}
 \usepackage{setspace}
+\usepackage{ulem}
 
 \newcommand\timesnewroman{
   \usepackage{newtxtext,newtxmath}
@@ -59,6 +60,9 @@
   \begin{scriptsize}
     \url{#1}
   \end{scriptsize}}
+
+\newcommand{\urlprintedunderline}[1]{\textcolor{blue}{\underline{\url{#1}}}}
+\newcommand{\hrefprintedunderline}[2]{\textcolor{blue}{\uline{\href{#1}{#2}}}}
 
 \newcommand{\inlinelinkheader}[1]{\hspace{1pt} $|$ \linkheader{#1} \vspace{2pt}}
 
@@ -149,8 +153,8 @@
   \geometry{
     a4paper,
     total={210mm,297mm},
-    left=5mm,
-    right=5mm,
+    left=15mm,
+    right=15mm,
     top=5mm,
     bottom=5mm}
   \pagenumbering{gobble}
@@ -164,8 +168,18 @@
   \titlespacing{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{1pt plus 2pt minus 2pt}
   \setlength\parindent{0pt}}
 
+% \definecolor{graywithcontrast}{rgb}{0.1,0.1,0.1}
 \newcommand{\etherealtext}[1]{
-  \textcolor{gray}{\textit{{\fontfamily{qag}\selectfont #1}}}}
+  % NB: we don't actually use this text coloration at all, but it messes up the
+  % document for some reason if we don't explicitly mark it black!
+  \textcolor{black}{
+    \tiny{
+      \uppercase{
+        \textit{{\fontfamily{qag}\selectfont #1}}
+      }
+    }
+  }
+}
 
 % math commands
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
@@ -195,7 +209,7 @@
 \newcommand{\existsuniq}{\exists!\,}
 \let\oldnexists\nexists
 \renewcommand{\nexists}{\,\oldnexists\,}
-\newcommand{\st}{\,\,s.t.\,\,}
+\newcommand{\suchthat}{\,\,s.t.\,\,}
 \let\oldforall\forall
 \renewcommand{\forall}{\,\oldforall\,}
 \newcommand{\pipe}{\,|\,}
