@@ -148,6 +148,12 @@
 % better C++ formatting
 \newcommand{\seeplusplus}{C\texttt{++}}
 
+\newcommand{\normalresumesection}[0]{
+  \titleformat{\section}{\normalfont\Large\bfseries}{
+    \thesection
+  }{1em}{}[\thinlinesplit]
+}
+
 %% typesetting functions for my resume
 \newcommand{\formatresume}{
   \geometry{
@@ -160,9 +166,8 @@
   \pagenumbering{gobble}
   % \allsectionsfont{\hspace*{5pt}}
   \setlist[itemize]{itemsep=-3pt}
+  \normalresumesection
   \titlespacing{\section}{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
-  \titleformat{\section}{\normalfont\Large\bfseries}{
-    \thesection}{1em}{}[\thinlinesplit]
   \titlespacing{\subsection}{0pt}{12pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
   \titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesection}{1em}{}
   \titlespacing{\subsubsection}{0pt}{12pt plus 4pt minus 2pt}{1pt plus 2pt minus 2pt}
